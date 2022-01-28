@@ -33,6 +33,7 @@ if __name__ == "__main__":
         if option == 1:
             machine.print_all_items()
 
+
         elif option == 2:
             type = item = None
             while type != "snack" and type != 'beverage':
@@ -40,13 +41,13 @@ if __name__ == "__main__":
                 type = type.lower().strip()
 
             name = input("Please input a name: ")
-            price = float(input("Please input a price: "))
-            quantity = input("Please input a quantity: ")
+            price = float(input("Please input a price (without a currency): "))
+            quantity = input("Please input a quantity (without a unit gr/l): ")
 
-            if type == 'snack':
+            if type == "snack":
                 item = Snack(name, price, quantity)
 
-            elif type == 'beverage':
+            elif type == "beverage":
                 item = Beverage(name, price, quantity)
         
             (status, message) = machine.add_item(item)
@@ -62,6 +63,7 @@ if __name__ == "__main__":
                 print(f"{status}: {message}")
             else:
                 print("error: ", "There are no item types in the vending machine!")
+
                 
         elif option == 4:
             if machine.items:
@@ -71,6 +73,7 @@ if __name__ == "__main__":
                 print(f"{status}: {message}")
             else:
                 print("error: ", "There are no item types in the vending machine!")
+                
 
         elif option == 5:
             if machine.items:
