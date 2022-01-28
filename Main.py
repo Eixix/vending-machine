@@ -40,7 +40,7 @@ if __name__ == "__main__":
                 type = type.lower().strip()
 
             name = input("Please input a name: ")
-            price = input("Please input a price: ")
+            price = float(input("Please input a price: "))
             quantity = input("Please input a quantity: ")
 
             if type == 'snack':
@@ -57,7 +57,7 @@ if __name__ == "__main__":
             if machine.items:
                 machine.print_all_items()
                 item_name = input("Which item do you want to restock (enter the exact name)? ")
-                additional_items = input("How many items do you want to restock (total must not exceed 10)? ")
+                additional_items = int(input("How many items do you want to restock (total must not exceed 10)? "))
                 (status, message) = machine.restock_item(item_name, additional_items)
                 print(f"{status}: {message}")
             else:
@@ -73,6 +73,10 @@ if __name__ == "__main__":
                 print("error: ", "There are no item types in the vending machine!")
 
         elif option == 5:
-            print("You want to")
+            if machine.items:
+                machine.print_all_items()
+                item_name = input("Which item do you want to buy? ")
+                (status, message) = machine.buy_item(item_name)
+                print(f"{status}: {message}")
         else:
             print("Thats no valid option, please choose a valid option")

@@ -7,8 +7,11 @@ class VendingMachine:
         self.items = {}
 
     def print_all_items(self):
-        for item in self.items.values():
-            print(item)
+        if self.items:
+            for item in self.items.values():
+                print(item)
+        else:
+            print("There are no items available")
 
     def add_item(self, item: Item):
         if item.name in self.items:
@@ -23,10 +26,10 @@ class VendingMachine:
 
         if not item or item.name not in self.items:
             return ("error", "This item is not available for restock, please choose a valid item.")
-        if int(self.items[item.name].amount) + additional_items >= 10:
+        if int(self.items[item.name].amount) + additional_items > 10:
             return ("error", "With the items you added the maximum total capacity is exceeded!")
         self.items[item.name].amount += additional_items
-        return ("success", f"Item {item.name} has been restocked to a total of {self.items[item.name] + additional_items}")
+        return ("success", f"Item {item.name} has been restocked to a total of {self.items[item.name].amount}")
 
     def delete_item(self, item_name: str):
         item = self.items.get(item_name)
@@ -34,3 +37,11 @@ class VendingMachine:
             return ("error", "This item is not available for deletion, please choose a valid item.")
         self.items.pop(item_name)
         return ("success", f"Item {item_name} has been deleted")
+
+    def buy_item(self, item_name: str):
+        item = self.items.get(item_name)
+        if not item or item.name not in self.items:
+            return ("error", "This item is not available for deletion, please choose a valid item.")
+        
+        self.items[item_name].amount -= 1
+        return ("success", f"Item {item_name} has been purchased! You payed {item.price}€")
