@@ -82,5 +82,8 @@ if __name__ == "__main__":
                 item_name = input("Which item do you want to buy? ")
                 (status, message) = machine.buy_item(item_name)
                 print(f"{status}: {message}")
+            else:
+                print("error: ", "There are no item types in the vending machine!")
+                
         else:
             print("Thats no valid option, please choose a valid option")
