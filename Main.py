@@ -30,10 +30,11 @@ if __name__ == "__main__":
         print_main_menu()
         option = int(input("Enter your choice: "))
 
+        # See all added items
         if option == 1:
             machine.print_all_items()
 
-
+        # Add an item
         elif option == 2:
             type = item = None
             while type != "snack" and type != 'beverage':
@@ -53,7 +54,7 @@ if __name__ == "__main__":
             (status, message) = machine.add_item(item)
             print(f"{status}: {message}")
 
-            
+        # Restock an item    
         elif option == 3:
             if machine.items:
                 machine.print_all_items()
@@ -64,7 +65,7 @@ if __name__ == "__main__":
             else:
                 print("error: ", "There are no item types in the vending machine!")
 
-                
+        # Delete an item
         elif option == 4:
             if machine.items:
                 machine.print_all_items()
@@ -73,8 +74,8 @@ if __name__ == "__main__":
                 print(f"{status}: {message}")
             else:
                 print("error: ", "There are no item types in the vending machine!")
-                
 
+        # Buy an item
         elif option == 5:
             if machine.items:
                 machine.print_all_items()
