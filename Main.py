@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
-from Beverage import Beverage
-from Snack import Snack
-from VendingMachine import VendingMachine
+from models.Beverage import Beverage
+from models.Snack import Snack
+from models.VendingMachine import VendingMachine
+
 
 # Represents the main menu
 main_menu_options = {
@@ -30,7 +31,7 @@ if __name__ == "__main__":
         option = int(input("Enter your choice: "))
 
         if option == 1:
-            print(machine.get_all_items())
+            machine.print_all_items()
 
         elif option == 2:
             type = item = None
@@ -53,18 +54,18 @@ if __name__ == "__main__":
 
             
         elif option == 3:
-            if machine.get_all_items():
-                print(machine.get_all_items())
+            if machine.items:
+                machine.print_all_items()
                 item_name = input("Which item do you want to restock (enter the exact name)? ")
                 additional_items = input("How many items do you want to restock (total must not exceed 10)? ")
                 (status, message) = machine.restock_item(item_name, additional_items)
                 print(f"{status}: {message}")
             else:
                 print("error: ", "There are no item types in the vending machine!")
-
+                
         elif option == 4:
-            if machine.get_all_items():
-                print(machine.get_all_items())
+            if machine.items:
+                machine.print_all_items()
                 item_name = input("Which item do you want to delete (enter the exact name)? ")
                 (status, message) = machine.delete_item(item_name)
                 print(f"{status}: {message}")
