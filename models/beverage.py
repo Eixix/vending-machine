@@ -1,4 +1,4 @@
-from models.Item import Item
+from models.item import Item
 
 class Beverage(Item):
     def __init__(self, name: str, price: int, volume: int, amount: int = 0):

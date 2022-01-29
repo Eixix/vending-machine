@@ -1,4 +1,4 @@
-from models.Item import Item
+from models.item import Item
 
 
 class VendingMachine:
@@ -28,6 +28,12 @@ class VendingMachine:
         return ("success", f"Item {item.name} was added successfully. Please add stock for this item.")
 
     def restock_item(self, item_name: str, additional_items: int) -> str:
+        """Restocks items of a certain type in the vending machine instance.
+
+        Keyword arguments:
+        item_name        -- a string that should be present as an item key.
+        additional_items -- how many more items of the type item_name should be in the vending machine instance
+        """
         item = self.items.get(item_name)
 
         if not item or item.name not in self.items:

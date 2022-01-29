@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-from models.Beverage import Beverage
-from models.Snack import Snack
-from models.VendingMachine import VendingMachine
+from models.beverage import Beverage
+from models.snack import Snack
+from models.vendingMachine import VendingMachine
 
 
 # Represents the main menu
