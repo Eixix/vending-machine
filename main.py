@@ -11,13 +11,12 @@ main_menu_options = {
     2: "Add an item",
     3: "Restock an item",
     4: "Delete an item",
-    5: "Buy an item"
+    5: "Buy an item",
+    0: "Exit the program"
 }
 
-"""
-Prints the main menu
-"""
 def print_main_menu():
+    """Prints the main menu"""
     print("---------------------------------------")
     for key in main_menu_options.keys():
         print(f"{key} --- {main_menu_options[key]}")
@@ -84,6 +83,10 @@ if __name__ == "__main__":
                 print(f"{status}: {message}")
             else:
                 print("error: ", "There are no item types in the vending machine!")
+        
+        elif option == 0:
+            print("Have a good day!")
+            break;
                 
         else:
             print("Thats no valid option, please choose a valid option")
