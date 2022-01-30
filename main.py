@@ -2,7 +2,7 @@
 
 from models.beverage import Beverage
 from models.snack import Snack
-from models.vendingMachine import VendingMachine
+from models.vending_machine import VendingMachine
 
 
 # Represents the main menu

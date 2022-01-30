@@ -36,7 +36,7 @@ class VendingMachine:
         """
         item = self.items.get(item_name)
 
-        if not item or item.name not in self.items:
+        if not item:
             return ("error", "This item is not available for restock, please choose a valid item.")
         if int(self.items[item.name].amount) + additional_items > 10:
             return ("error", "With the items you added the maximum total capacity is exceeded!")
@@ -44,15 +44,25 @@ class VendingMachine:
         return ("success", f"Item {item.name} has been restocked to a total of {self.items[item.name].amount}")
 
     def delete_item(self, item_name: str) -> str:
+        """Deletes an item of a certain type in the vending machine instance.
+
+        Keyword arguments:
+        item_name        -- a string that should be present as an item key.
+        """
         item = self.items.get(item_name)
-        if not item or item.name not in self.items:
+        if not item:
             return ("error", "This item is not available for deletion, please choose a valid item.")
         self.items.pop(item_name)
         return ("success", f"Item {item_name} has been deleted")
 
     def buy_item(self, item_name: str) -> str:
+        """Buys an item effectively reducing its stock by -1.
+        
+        Keyword arguments:
+        item_name        -- a string that should be present as an item key.
+        """
         item = self.items.get(item_name)
-        if not item or item.name not in self.items:
+        if not item:
             return ("error", "This item is not available for deletion, please choose a valid item.")
         if int(self.items[item.name].amount) - 1 >= 0:
             return ("error", "This item is out of stock!")
